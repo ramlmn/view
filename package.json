@@ -1,0 +1,38 @@
+{
+  "name": "@ramlmn/view",
+  "version": "1.0.0",
+  "description": "Handle global events in views with ease",
+  "homepage": "https://github.com/ramlmn/view#readme",
+  "keywords": [
+    "view",
+    "components"
+  ],
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "scripts": {
+    "lint": "xo",
+    "build": "npm run cjs && npm run esm",
+    "cjs": "cp src/index.js cjs/index.js && echo '\nmodule.exports = {\n  viewIn,\n  viewOut,\n  shouldHandle\n};\n' >> cjs/index.js",
+    "esm": "cp src/index.js esm/index.js && echo '\nexport {\n  viewIn,\n  viewOut,\n  shouldHandle\n};\n' >> esm/index.js",
+    "test": "npm run lint && npm run build"
+  },
+  "author": "Laxman Damera",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ramlmn/view/issues"
+  },
+  "devDependencies": {
+    "xo": "^0.23.0"
+  },
+  "files": [
+    "src/",
+    "cjs/",
+    "esm/"
+  ],
+  "xo": {
+    "space": 2,
+    "ignores": [
+      "(cjs|esm)/**/*.js"
+    ]
+  }
+}
