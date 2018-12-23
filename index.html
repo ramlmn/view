@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>@ramlmn/view Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="./stylesheet/style.css" />
+</head>
+<body>
+  <custom-window title="Explore"></custom-window>
+  <custom-taskbar></custom-taskbar>
+
+  <template id="tmpl-custom-window">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      button svg {
+        /* width: 100%; */
+        height: 100%;
+        fill: currentColor;
+      }
+
+      :host {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 640px;
+        height: 320px;
+        background: #fff;
+        border: 1px solid #d2d2d2;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+        will-change: transform, opacity;
+        outline: none !important;
+      }
+
+      :host::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      :host([active]) {
+        border: 1px solid #3F51B5;
+        box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.3);
+      }
+
+      :host([active])::after {
+        opacity: 0;
+      }
+
+      :host([minimized]) {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      :host([maximized]) {
+        width: 100%;
+        height: 100%;
+        border: none;
+        transform: translate(0) !important;
+      }
+
+      :host .header {
+        display: flex;
+        font-size: 12px;
+        background: #eeeeee;
+        user-select: none;
+      }
+
+      :host .header .title {
+        padding: 0.375rem 0.75rem;
+        flex: 1;
+      }
+
+      :host .header .actions {
+        display: flex;
+        padding: 0.25rem;
+      }
+
+      :host .header .actions .action {
+        font: inherit;
+        margin: 0;
+        border: none;
+        background: none;
+        padding: 0.125rem;
+        width: 1.5rem;
+        margin-left: 0.25rem;
+        height: 1.5rem;
+        border-radius: 50%;
+      }
+
+      :host .header .actions .action:hover {
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      :host .header .actions .action.action--close:hover {
+        background: #f44336;
+        color: #fff;
+      }
+    </style>
+    <div class="header">
+      <div class="title">Test</div>
+      <div class="actions">
+        <button type="button" class="action action--minimize" title="Minimize" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+          </svg>
+        </button>
+        <button type="button" class="action action--maximize" title="Maximize" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+          </svg>
+        </button>
+        <button type="button" class="action action--close" title="Close" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </template>
+
+  <script type="module" src="./scripts/main.js"></script>
+</body>
+</html>
